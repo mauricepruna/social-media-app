@@ -1,0 +1,25 @@
+{
+  "name": "social-media-app",
+  "version": "1.0.0",
+  "description": "This is a Social Meddia App using the MERNG stack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mauricepruna/social-media-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mauricepruna/social-media-app/issues"
+  },
+  "homepage": "https://github.com/mauricepruna/social-media-app#readme",
+  "dependencies": {
+    "apollo-server": "^2.18.2",
+    "graphql": "^15.3.0",
+    "mongoose": "^5.10.9"
+  }
+}
