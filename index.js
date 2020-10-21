@@ -13,13 +13,13 @@ const typeDefs = gql`
     username: String!
   }
   type Query {
-    getPost: [Post]
+    getPosts: [Post]
   }
 `;
 
 const resolvers = {
   Query: {
-    getPost: async () => {
+    async getPosts() {
       try {
         const posts = await Post.find();
         return posts;
@@ -30,15 +30,17 @@ const resolvers = {
   },
 };
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
+
 mongoose
   .connect(MONGODB, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    console.log("MongoDB connected");
+    console.log("MongoDB Connected");
     return server.listen({ port: 5000 });
   })
   .then((res) => {
-    console.log(
-      `🚀 Server ready at http://localhost:5000${server.graphqlPath}`
-    );
+    console.log(`Server running at ${res.url}`);
   });
