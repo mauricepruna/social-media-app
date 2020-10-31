@@ -11,5 +11,6 @@ module.exports = {
   SECRET_KEY: 'some very secret key'
 };
 ```
-- npm install 
-- node index
+
+- npm install
+- npm start
