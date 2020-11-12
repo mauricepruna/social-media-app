@@ -22,6 +22,16 @@ const generateToken = (user) => {
 };
 
 module.exports = {
+  Query: {
+    async getUsers() {
+      try {
+        const users = await User.find().sort({ createdAt: -1 });
+        return users;
+      } catch (err) {
+        throw new Error(err);
+      }
+    },
+  },
   Mutation: {
     async login(_, { username, password }) {
       const { errors, valid } = validateLoginInput(username, password);
@@ -30,13 +40,11 @@ module.exports = {
       }
 
       const user = await User.findOne({ username });
-      console.log(user);
+
       if (!user) {
         errors.general = 'User not found';
         throw new UserInputError('Wrong credentials', { errors });
       }
-      console.log(password);
-      console.log(user.password);
 
       const match = await bcrypt.compare(password, user.password);
 
